@@ -1,14 +1,15 @@
 import { lighten } from "polished";
 export const theme = {
   colors: {
-    purple: {
-      light: "#ce8dd0",
-      primary: "#900093"
+    pink: {
+      primary: "hotpink"
     },
     gray: {
-      primary: "#665777",
-      medium: "#7a7088",
-      background: "#beb3cc"
+      dark: "#333",
+      primary: "#666",
+      medium: "#999",
+      light: "#c4c4c4",
+      background: "#eee"
     },
     black: {
       primary: "#000",
@@ -26,7 +27,6 @@ export const theme = {
       light: lighten(0.33, "#7b61ff")
     },
     brand: {
-      bright: "#FF008A",
       primary: "#EB8B8B",
       secondary: "#E6CDC0",
       light: "#F9F2EA"
@@ -50,23 +50,6 @@ export const theme = {
       primary: "#D04040",
       medium: lighten(0.66, "#D04040"),
       light: lighten(0.33, "#D04040")
-    }
-  },
-  gradients: {
-    rainbow:
-      "linear-gradient(90deg, #FF0000 0%, #FF9900 14.04%, #FAFF00 28.08%, #00FF19 42.12%, #00F0FF 55.64%, #000AFF 70.2%, #EB00FF 84.76%, #FF0000 99.84%)",
-    pinkhaze: "linear-gradient(180deg, rgba(157, 22, 95, 0.5) 0%, rgba(157, 22, 95, 0) 100%)"
-  },
-  fonts: {
-    body: {
-      monoBold: "body_mono_bold",
-      monoBoldItalic: "body_mono_bold_italic",
-      monoItalic: "body_mono_italic",
-      monoExtraLight: "body_mono_extralight",
-      monoExtraLightItalic: "body_mono_extralightitalic",
-      monoSemiBold: "body_mono_semibold",
-      bold: "body_bold",
-      condensedMedium: "body_condensed_med"
     }
   },
   background: {
@@ -157,6 +140,25 @@ export const theme = {
       fontSize: "6.2699px",
       lineHeight: "7px",
       color: "#000"
+    }
+  },
+  breakpoints: {
+    values: {
+      ss: 375,
+      xs: 414,
+      sm: 768,
+      md: 1024,
+      lg: 1280,
+      lgxl: 1440,
+      xl: 1800
+    },
+    heights: {
+      xs: 414,
+      sm: 768,
+      md: 1024,
+      lg: 1280,
+      lgxl: 1440,
+      xl: 1800
     }
   }
 };

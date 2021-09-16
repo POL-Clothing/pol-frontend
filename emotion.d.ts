@@ -4,13 +4,18 @@ import { string } from "prop-types";
 declare module "@emotion/react" {
   export interface Theme {
     colors: {
-      purple: {
+      pink: {
+        primary: string;
+      };
+      purple?: {
         light: string;
         primary: string;
       };
       gray: {
+        dark: string;
         primary: string;
         medium: string;
+        light: string;
         background: string;
       };
       black: {
@@ -29,7 +34,7 @@ declare module "@emotion/react" {
         light: string;
       };
       brand: {
-        bright: string;
+        bright?: string;
         primary: string;
         secondary: string;
         light: string;
@@ -157,6 +162,25 @@ declare module "@emotion/react" {
         fontSize: string;
         lineHeight: string;
         color: string;
+      };
+    };
+    breakpoints: {
+      values: {
+        ss: number;
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
+        lgxl: number;
+        xl: number;
+      };
+      heights: {
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
+        lgxl: number;
+        xl: number;
       };
     };
   }
