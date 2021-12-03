@@ -12,7 +12,7 @@ import {
   FacebookIcon,
   PlayIcon,
   CircleIcon
-} from './Layout.styles';
+} from "./Layout.styles";
 
 const iconLinks = [
   {
