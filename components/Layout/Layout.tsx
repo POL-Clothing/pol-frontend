@@ -2,97 +2,18 @@ import React from "react";
 import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
-import { Column, Foot } from "../Foot/Foot";
-import { pxIphone } from "../../utils";
+import { Column, Footer } from "../Footer/Footer";
 
-type LogoTypeFC = {
-  imageFile: string;
-  isDark?: boolean;
-};
+import {
+  LayoutContainer,
+  LayoutContent,
+  Logo,
+  CameraIcon,
+  FacebookIcon,
+  PlayIcon,
+  CircleIcon
+} from './Layout.styles';
 
-type LogoType = {
-  src: string;
-  isDark: boolean;
-};
-
-const Logo = styled.img<LogoType>`
-  width: 181px;
-  height: auto;
-  margin-bottom: 20px;
-  ${(p) => (p.isDark ? "filter: invert(1);" : null)};
-  box-shadow: 0 10px 22px rgba(255, 255, 255, 0.1);
-  @media (max-width: 375px) {
-    width: ${pxIphone(80)};
-    margin-bottom: 14.68vw;
-    height: auto;
-  }
-  @media (max-width: 750px) {
-    margin-bottom: 0;
-    margin-top: 6px;
-  }
-`;
-
-export const MyLogo: React.FC<LogoTypeFC> = ({ imageFile, isDark }) => (
-  <Logo src={imageFile} isDark={isDark} />
-);
-
-const CameraIcon = styled.img`
-  width: 11px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 5.522vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-  @media (max-width: 750px) {
-    width: 5.522vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-`;
-const FacebookIcon = styled.img`
-  width: 6.81px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 3.634vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-  @media (max-width: 750px) {
-    width: 3.634vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-`;
-const PlayIcon = styled.img`
-  width: 12.29px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 6.557vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-  @media (max-width: 750px) {
-    width: 6.557vw;
-    height: auto;
-    margin-right: 2.069vw;
-  }
-`;
-const CircleIcon = styled.img`
-  width: 10.35px;
-  height: auto;
-  @media (max-width: 375px) {
-    width: 5.522vw;
-    height: auto;
-  }
-  @media (max-width: 750px) {
-    width: 5.522vw;
-    height: auto;
-  }
-`;
 const iconLinks = [
   {
     icon: <CameraIcon src={"/camera.png"} />,
@@ -165,30 +86,28 @@ const columns: Column[] = [
     ]
   }
 ];
-export const Container = styled.main`
-  flex: 1;
-  overflow: scroll;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-export const Content = styled.div`
-  flex: 1;
-  overflow: scroll;
-`;
+
+type LogoTypeFC = {
+  imageFile: string;
+  isDark?: boolean;
+};
+
+export const MyLogo: React.FC<LogoTypeFC> = ({ imageFile, isDark }) => (
+  <Logo src={imageFile} isDark={isDark} />
+);
+
 export const Layout: React.FC<LayoutProps> = ({
   children
 }: {
   children: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <Container>
-      <Content>
+    <LayoutContainer>
+      <LayoutContent>
         {children}
         <ClassNames>
           {({ css, cx }) => (
-            <Foot
+            <Footer
               classes={{
                 root: css`
                   background-color: #000;
@@ -202,7 +121,7 @@ export const Layout: React.FC<LayoutProps> = ({
             />
           )}
         </ClassNames>
-      </Content>
-    </Container>
+      </LayoutContent>
+    </LayoutContainer>
   );
 };

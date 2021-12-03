@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
-export const Container = styled.div`
+export const FooterContainer = styled.div`
   padding-top: 41px;
   color: #fff;
   padding-bottom: 68px;
+
   @media (max-width: ${p => p.theme.breakpoints.values.xs}px) {
     padding-top: 14px;
   }

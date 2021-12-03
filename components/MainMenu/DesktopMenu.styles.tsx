@@ -52,7 +52,7 @@ export const DropDown = styled.div<DropDownProps>`
   width: 100%;
   z-index: 10000;
   transition: all 1s linear;
-  display: ${(props) => (props.isActive ? "block" : "none")};
+  display: ${(props) => (props.isActive ? "flex" : "none")};
   transform: ${(props) => (props.isActive ? "translateY(0)" : "translateY(-100%)")};
   box-shadow: 0 6px 12px rgb(0 0 0 / 5%);
 `;

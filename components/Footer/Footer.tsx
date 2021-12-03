@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import classnames from "classnames";
 import {
-  Container,
+  FooterContainer,
   Grid,
   LogoDiv,
   Column,
@@ -13,7 +13,7 @@ import {
   IconLinkWrapper,
   IconLinksMo,
   MobileIconLink
-} from "./Foot.styles";
+} from "./Footer.styles";
 import { Icon } from "@material-ui/core";
 export type CLASSESTYPE = {
   root?: string;
@@ -49,7 +49,7 @@ export interface FootProps {
   classes?: CLASSESTYPE;
   footerData: FooterDataType;
 }
-export const Foot: React.FC<FootProps> = ({ classes, footerData }) => {
+export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
   const Logo = footerData.logo as React.ComponentType;
   const gridClass = classes?.grid || "";
   const columnClass = classes?.columnClassWrapper || "";
@@ -61,7 +61,7 @@ export const Foot: React.FC<FootProps> = ({ classes, footerData }) => {
   const columns = footerData.columns;
   const mobileIconLinks = footerData.mobileIconLinks;
   return (
-    <Container className={classnames(classes?.root)}>
+    <FooterContainer className={classnames(classes?.root)}>
       {Logo && <LogoDiv>{Logo}</LogoDiv>}
       <Grid className={gridClass}>
         {columns.map((item, index) => (
@@ -103,6 +103,6 @@ export const Foot: React.FC<FootProps> = ({ classes, footerData }) => {
           ))}
         </IconLinksMo>
       )}
-    </Container>
+    </FooterContainer>
   );
 };
