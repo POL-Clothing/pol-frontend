@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
@@ -10,6 +10,7 @@ import "swiper/swiper-bundle.min.css";
 import { menusData } from "../components/MainMenu/data/menusData";
 import "./app.css";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import * as tracking from "../config/tracking";
 
 // Styles
@@ -31,7 +32,7 @@ const CustomIcon = styled.img`
   height: auto;
 `;
 export default function MyApp({ Component, pageProps }: AppProps) {
-  React.useEffect(() => {
+  useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentElement?.removeChild(jssStyles);
@@ -40,7 +41,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   const router = useRouter();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleRouteChange = (url: string) => {
       tracking.trackPageview(url);
     };
@@ -84,6 +85,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
+            <Head>
+              <title>{process.env.PAGE_TITLE}</title>
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"
+              />
+            </Head>
             {renderHomeContent()}
           </ThemeProvider>
         </Hydrate>
