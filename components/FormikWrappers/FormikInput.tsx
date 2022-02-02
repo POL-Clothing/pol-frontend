@@ -2,11 +2,16 @@ import React from "react";
 import { TextField } from "@material-ui/core";
 // import { Field, useFormikContext } from 'formik';
 
-import { Error } from "./FormikInput.styles";
+import { BasicField, Error } from "./FormikInput.styles";
 
-const FormikInput = ({ field: { ...fields }, form: { touched, errors }, styles, ...props }) => (
+export const FormikInput = ({
+  field: { ...fields },
+  form: { touched, errors },
+  styles,
+  ...props
+}: any) => (
   <>
-    <TextField
+    <BasicField
       selectedTheme="dark"
       {...props}
       {...fields}
@@ -16,4 +21,3 @@ const FormikInput = ({ field: { ...fields }, form: { touched, errors }, styles, 
     {touched[fields.name] && errors[fields.name] ? <Error>{errors[fields.name]}</Error> : ""}
   </>
 );
-export default FormikInput;

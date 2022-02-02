@@ -8,7 +8,7 @@ import {
   AuthFormType,
   loginForm,
   signupForm,
-  forgotPasswordForm,
+  resetPasswordForm,
   updatePasswordForm,
   updateEmailForm
 } from "../AuthForm/constants";
@@ -40,7 +40,8 @@ export const SignupForm = () => {
             .catch(() => {
               setSubmitting(false);
             });
-        }}>
+        }}
+      >
         {({ isSubmitting }) => (
           <Form>
             <FieldContainer>
@@ -66,7 +67,7 @@ export const SignupForm = () => {
 
             <p>
               Already have an account{" "}
-              <Link href="/authenticate/login">
+              <Link href="/login">
                 <a>Log In</a>
               </Link>{" "}
               here

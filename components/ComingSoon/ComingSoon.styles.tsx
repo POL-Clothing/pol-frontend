@@ -13,6 +13,11 @@ export const Container = styled.div`
 export const Logo = styled.img`
   width: auto;
   height: 240px;
+
+  @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    width: 90%;
+    height: auto;
+  }
 `;
 
 export const Text = styled.div`
@@ -23,5 +28,6 @@ export const Text = styled.div`
   font-weight: normal;
   font-size: 21.4598px;
   line-height: 28px;
-  color: #ffffff;
+  color: ${(p) =>
+    p.theme.isDarkMode ? p.theme.colors.white.primary : p.theme.colors.black.primary};
 `;

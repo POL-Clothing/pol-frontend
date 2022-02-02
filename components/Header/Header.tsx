@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { Badge, Popover } from "@material-ui/core";
 import Sticky from "react-sticky-el";
 import { HeaderProps } from "./types";
 import { useAuth } from "../../config/auth";
@@ -8,10 +10,12 @@ import { MyLogo } from "../Layout/Layout";
 import SearchBar from "../SearchBar";
 import { MainMenu } from "../MainMenu";
 import { menusData } from "../MainMenu/data/menusData";
-import { Cart } from "../Cart/Cart";
+import { CartSidebar } from "../CartSidebar/CartSidebar";
+import { SocialLinks } from "..";
 
 import {
   TopHeader,
+  LeftSide,
   RightSide,
   LogoDiv,
   HeaderDiv,
@@ -20,21 +24,40 @@ import {
   Category,
   UserIconMo,
   CartMo,
+  CartToggle,
   HeaderAccount,
+  HeaderOptions,
   ArrowDown,
   ShoppingCart,
-  FavoriteIcon
+  FavoriteIcon,
+  AccountEmail,
+  AccountMenu
 } from "./Header.styles";
 
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
 
-export const Header: React.FC<HeaderProps> = (props) => {
+export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
-  const [cartVisible, setCartVisible] = React.useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const [cartVisible, setCartVisible] = useState(false);
+  const [accountVisible, setAccountVisible] = useState(false);
+  const [accountElem, setAccountElem] = useState(null);
+  const accountRef = useRef(null);
+  const accountOpen = Boolean(accountElem);
+  const accountId = accountVisible ? "simple-popover" : undefined;
   const toggleCart = () => setCartVisible((isVisible) => !isVisible);
+  const toggleAccount = () => setAccountVisible((isVisible) => !isVisible);
 
   const isMaint = process.env.IS_MAINT_MODE;
+
+  const handleAccount = (event: any) => {
+    setAccountElem(event.currentTarget);
+  };
+
+  const handleCloseAccount = () => {
+    setAccountElem(null);
+  };
 
   if (isMaint && isMaint === "true") {
     return null;
@@ -47,55 +70,68 @@ export const Header: React.FC<HeaderProps> = (props) => {
   return (
     <HeaderDiv>
       <TopHeader>
+        {!isMobile && (
+          <LeftSide>
+            <SocialLinks darkMode={darkMode} />
+          </LeftSide>
+        )}
         <LogoDiv>
           <Link href="/">
             <LinkDiv isActive>
-              <MyLogo isDark imageFile="/logo.png" />
+              <MyLogo imageFile="/pol-logo.png" darkMode={darkMode} />
             </LinkDiv>
           </Link>
         </LogoDiv>
-        <div>
-          <RightSide>
-            <SearchBar />
-            {user ? (
-              <>
-                <div>{user.data.attributes.email}</div>
-                <UserIconMo src={"/user.png"} />
+        <RightSide>
+          {isMobile ? null : <SearchBar darkMode={darkMode} />}
+          {user ? (
+            <HeaderAccount>
+              <AccountEmail aria-describedby={accountId} onClick={handleAccount}>
+                {user.data.attributes.email}
                 <ArrowDown />
+              </AccountEmail>
+              <AccountMenu
+                open={accountOpen}
+                anchorEl={accountElem}
+                onClose={handleCloseAccount}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right"
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right"
+                }}
+              >
+                <ul>
+                  <li>Account Settings</li>
+                  <li>Need Help?</li>
+                </ul>
+                <hr />
+                <div onClick={logout}>LOGOUT</div>
+              </AccountMenu>
+              {/* <UserIconMo src={"/user.png"} /> */}
+              <Badge badgeContent={4} color="secondary">
                 <FavoriteIcon />
-                <button onClick={logout}>LOGOUT</button>
-              </>
-            ) : (
-              <>
-                {/* <CartMo src={"/CART.png"} /> */}
-                {/* <HeaderAccount>MyAccount</HeaderAccount> */}
-                {/* <ShoppingCart src={"/CART.png"} /> */}
-                <Link href="/authenticate/login">
-                  <LinkDiv isActive={pathname === "/authenticate/login"}>LOG IN</LinkDiv>
-                </Link>
-                <Link href="/authenticate/signup">
-                  <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
-                </Link>
-              </>
-            )}
-            <Cart isVisible={cartVisible} toggle={toggleCart} />
-          </RightSide>
-        </div>
+              </Badge>
+            </HeaderAccount>
+          ) : (
+            <HeaderOptions>
+              <Link href="/login">
+                <LinkDiv isActive={pathname === "/login"}>LOG IN</LinkDiv>
+              </Link>
+              <Link href="/authenticate/signup">
+                <LinkDiv isActive={pathname === "/authenticate/signup"}>SIGN UP</LinkDiv>
+              </Link>
+            </HeaderOptions>
+          )}
+          <CartToggle>
+            <Badge badgeContent={4} color="primary">
+              <CartSidebar isVisible={cartVisible} toggle={toggleCart} />
+            </Badge>
+          </CartToggle>
+        </RightSide>
       </TopHeader>
-      {/* <BottomHeader>
-        <Sticky>
-          <MainMenu
-            pcMenuItemClassName={"pc-menu-item"}
-            outterContainerId={"outer-container"}
-            pageWrapId={"page-wrap"}
-            animationType={"slide"}
-            menusData={menusData}
-            showMenuHeader={true}
-            menuFooter={false}
-            right={false}
-          />
-        </Sticky>
-      </BottomHeader> */}
     </HeaderDiv>
   );
 };

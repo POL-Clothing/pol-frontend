@@ -8,10 +8,10 @@ const Static = {
   },
   questions: {
     account: {
-      sebastian: "Where should we send your<br />pre-qualification info?",
+      sebastian: "Thanks so much!",
       title: "Almost done!",
-      subtitle: `Just send and save...`,
-      description: `We'll send you a unique code to login and access your terms.`
+      subtitle: `One more step.`,
+      description: `We'll send you a unique code to login.`
     }
   },
   labels: {
@@ -27,7 +27,7 @@ const Static = {
   errors: {
     isRequired: "Required",
     minDateOfBirth: "You cannot have a Date of Birth prior to 1900",
-    maxDatOfBirth: "You must be 18 years of age",
+    maxDateOfBirth: "You must be 18 years of age",
     annualIncomeMin: "Annual Income must be at least $4,000",
     annualIncomeMax: "Annual Income cannot be greater than $9,999,999",
     phoneNumberValid: "Please enter a valid Phone Number",

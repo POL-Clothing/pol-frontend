@@ -1,7 +1,6 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import type { AppProps /*, AppContext */ } from "next/app";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { Hydrate } from "react-query/hydration";
+import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "../config/auth";
 import { MainMenu, Header, ComingSoon } from "../components";
@@ -10,6 +9,7 @@ import "swiper/swiper-bundle.min.css";
 import { menusData } from "../components/MainMenu/data/menusData";
 import "./app.css";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import * as tracking from "../config/tracking";
 
 // Styles
@@ -25,22 +25,22 @@ import "../components/Terms/ElectronicSignaturesModal.css";
 import "../components/Terms/FinancialPrivacyModal.css";
 import "./app.css";
 
-const queryClient = new QueryClient();
-const CustomIcon = styled.img`
-  width: ${pxIphone(37)};
-  height: auto;
-`;
+import { AppWrapper } from "./_app.styles";
+
 export default function MyApp({ Component, pageProps }: AppProps) {
-  React.useEffect(() => {
+  const [queryClient] = useState(() => new QueryClient());
+  const [wholesale, setWholesale] = useState(true);
+  const router = useRouter();
+  const isMaint = process.env.IS_MAINT_MODE;
+
+  useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentElement?.removeChild(jssStyles);
     }
   }, []);
 
-  const router = useRouter();
-
-  React.useEffect(() => {
+  useEffect(() => {
     const handleRouteChange = (url: string) => {
       tracking.trackPageview(url);
     };
@@ -52,16 +52,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  const isMaint = process.env.IS_MAINT_MODE;
+  const renderContent = (theme: any) => {
+    // const darkMode = (process.env.IS_DARK_MODE === "true");
+    const darkMode = theme.isDarkMode ? theme.isDarkMode : false;
 
-  const renderHomeContent = () => {
     if (isMaint && isMaint === "true") {
       return <ComingSoon />;
     }
 
     return (
-      <>
-        <Header />
+      <AppWrapper>
+        <Header darkMode={darkMode} />
         <MainMenu
           showMenuHeader
           customBurgerIcon={<i className="btb bt-bars" />}
@@ -73,8 +74,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           menusData={menusData}
           right={false}
         />
-        <Component {...pageProps} />
-      </>
+        <Component {...pageProps} wholesale={wholesale} />
+      </AppWrapper>
     );
   };
 
@@ -83,10 +84,19 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
-            <GlobalStyles />
-            {renderHomeContent()}
+            <GlobalStyles theme={theme} />
+            <Head>
+              <title>{process.env.PAGE_TITLE}</title>
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, minimal-ui"
+              />
+            </Head>
+            {renderContent(theme)}
           </ThemeProvider>
         </Hydrate>
+
+        <ReactQueryDevtools initialIsOpen={false} />
       </AuthProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>

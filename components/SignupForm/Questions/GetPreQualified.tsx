@@ -6,54 +6,58 @@ import styled from "@emotion/styled";
 import { Carousel } from "react-responsive-carousel";
 
 // Local
-import Sebastian from "../../Sebastian";
+import TipBot from "../../TipBot";
 import { QuestionWrapper, InputGroupWrapper, Title, Description } from "./Questions.styles";
 
-export const ColorizedFinance = styled.i`
+interface GenericThemeType {
+  theme?: any;
+}
+
+export const ColorizedFinance = styled.i<GenericThemeType>`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
-  & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+  & svg g path:first-of-type {
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
-export const ColorizedCalendar = styled.i`
+export const ColorizedCalendar = styled.i<GenericThemeType>`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
-  & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+  & svg g path:first-of-type {
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
-export const ColorizedLoan = styled.i`
+export const ColorizedLoan = styled.i<GenericThemeType>`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
-  & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+  & svg g path:first-of-type {
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
-export const ColorizedCart = styled.i`
+export const ColorizedCart = styled.i<GenericThemeType>`
   ${"" /* transform: scale(2); */}
   & svg {
     width: 5rem;
     height: 5rem;
   }
-  & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+  & svg g path:first-of-type {
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
-const partnerName = "POL";
+const partnerName = process.env.SITE_TITLE;
 
 export const GetPreQualified = () => {
   // const { errors, touched } = useFormikContext();
@@ -62,11 +66,11 @@ export const GetPreQualified = () => {
     return {
       __html: `Welcome from <strong>${partnerName}</strong>!<br /> Create your account, and you'll be surfing the latest trends in no-time.`
     };
-  });
+  }, []);
 
   return (
     <QuestionWrapper>
-      <Sebastian speech={speechMarkup()} />
+      <TipBot speech={speechMarkup()} />
       <InputGroupWrapper>
         <Carousel
           autoPlay
@@ -74,7 +78,8 @@ export const GetPreQualified = () => {
           infiniteLoop
           showArrows={false}
           showStatus={false}
-          showThumbs={false}>
+          showThumbs={false}
+        >
           <div>
             <ColorizedCalendar className="bts bt-calendar" />
             <Title>Free Shipping</Title>

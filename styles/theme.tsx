@@ -1,5 +1,6 @@
 import { lighten } from "polished";
 export const theme = {
+  isDarkMode: false,
   colors: {
     pink: {
       primary: "hotpink"
@@ -87,28 +88,28 @@ export const theme = {
   typography: {
     titleXXL: {
       fontFamily: "Bebas Neue",
-      fontWeight: "normal",
+      fontWeight: "bold",
       fontSize: "72px",
       lineHeight: "86px",
       color: "#000"
     },
     titleXL: {
       fontFamily: "Bebas Neue",
-      fontWeight: "normal",
+      fontWeight: "bold",
       fontSize: "33.8681px",
       lineHeight: "41px",
       color: "#000"
     },
     titleLG: {
       fontFamily: "Bebas Neue",
-      fontWeight: "normal",
+      fontWeight: "bold",
       fontSize: "24px",
       lineHeight: "30px",
       color: "#000"
     },
     titleMD: {
       fontFamily: "Bebas Neue",
-      fontWeight: "normal",
+      fontWeight: "bold",
       fontSize: "20px",
       lineHeight: "24px",
       color: "#000"
@@ -117,14 +118,14 @@ export const theme = {
       fontFamily: "Bebas Neue",
       fontWeight: "normal",
       fontSize: "14px",
-      lineHeight: "150%",
+      lineHeight: "1.5rem",
       color: "#000"
     },
     bodyMD: {
       fontFamily: "Roboto",
       fontWeight: "normal",
       fontSize: "18px",
-      lineHeight: "18px",
+      lineHeight: "20px",
       color: "#000"
     },
     bodySM: {
@@ -137,8 +138,8 @@ export const theme = {
     bodyXXS: {
       fontFamily: "Roboto",
       fontWeight: "normal",
-      fontSize: "6.2699px",
-      lineHeight: "7px",
+      fontSize: "6px",
+      lineHeight: "8px",
       color: "#000"
     }
   },

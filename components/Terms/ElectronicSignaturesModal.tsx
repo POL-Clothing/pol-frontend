@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-// import { Close } from '@carvana/icons';
+// import { Close } from '@material-ui/icons';
 
 export const ElectronicSignaturesModal = () => {
   return (
     <div className="es-modal-container">
       <div className="es-modal-content-container">
+        {/* <Close onClick={() => handleClose} /> */}
         <p className="es-modal-text">
           Please read this carefully and print a copy for your reference.
         </p>
@@ -81,7 +82,8 @@ export const ElectronicSignaturesModal = () => {
             <a
               href="https://www.microsoft.com/en-us/windows/microsoft-edge"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               https://www.microsoft.com/en-us/windows/microsoft-edge
             </a>
             ), the current version of Mozilla Firefox (see{" "}

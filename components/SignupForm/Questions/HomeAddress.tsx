@@ -5,7 +5,7 @@ import { Field, useFormikContext } from "formik";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 // Local
-import Sebastian from "../../Sebastian";
+import TipBot from "../../TipBot";
 import { FormikInput, FormikAutocomplete } from "../../FormikWrappers";
 import { QuestionWrapper, InputGroupWrapper, InputWrapper } from "./Questions.styles";
 
@@ -21,11 +21,11 @@ export const HomeAddress = () => {
 
   const speechMarkup = useCallback(() => {
     return { __html: "Where do you currently live?" };
-  });
+  }, []);
 
   return (
     <QuestionWrapper>
-      <Sebastian speech={speechMarkup()} />
+      <TipBot speech={speechMarkup()} />
       <InputGroupWrapper>
         <InputWrapper>
           <Field
