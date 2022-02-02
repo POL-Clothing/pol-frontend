@@ -83,7 +83,7 @@ export const RightSide = styled.div`
   right: 10px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   z-index: 2;
 
   @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {

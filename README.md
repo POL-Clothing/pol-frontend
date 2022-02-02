@@ -96,7 +96,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - ~~State Mgmt~~ (hooks/useContext... no Redux, yet)
 - ~~Request Mgmt~~ (React Query)
 - ~~Search~~ (Fuse.js)
-- Pusher / API Integration
+- Pusher / Sockets
+- eCommerce API Integration
 - ~~Styled Components~~ (@emotion/styled)
 - Moving Letters
 - UI Sounds (proprietary: "npm install beeper")

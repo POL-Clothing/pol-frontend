@@ -129,6 +129,7 @@ export const menusData: menuDataItem[] = [
   {
     name: "CLOTHING",
     key: "clothing",
+    pcMenuItem: <NewDigs />,
     children: [
       {
         name: "TOPS",

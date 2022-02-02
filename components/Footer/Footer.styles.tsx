@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-export const Container = styled.div`
+export const FooterContainer = styled.div`
   background: ${(p) => p.theme.colors.black.primary};
   padding-top: 41px;
   color: ${(p) =>

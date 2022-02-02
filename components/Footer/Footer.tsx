@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { SocialLinks } from "..";
 
 import {
-  Container,
+  FooterContainer,
   Grid,
   LogoDiv,
   Column,
@@ -63,7 +63,7 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
   const columns = footerData.columns;
   const mobileIconLinks = footerData.mobileIconLinks;
   return (
-    <Container className={classnames(classes?.root)}>
+    <FooterContainer className={classnames(classes?.root)}>
       {Logo && <LogoDiv>{Logo}</LogoDiv>}
       <Grid className={gridClass}>
         {columns.map((item, index) => (
@@ -97,6 +97,6 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
         ))}
       </Grid>
       <SocialLinks isDark />
-    </Container>
+    </FooterContainer>
   );
 };
