@@ -1,10 +1,10 @@
 export const menuStyles: any = {
   bmBurgerButton: {
     position: "fixed",
-    width: "36px",
-    height: "30px",
-    left: "1.06vw",
-    top: "3.73vw"
+    width: "33px",
+    height: "18px",
+    left: "15px",
+    top: "16px"
   },
   bmBurgerBars: {
     background: "#000"
@@ -26,7 +26,7 @@ export const menuStyles: any = {
   },
   bmMenu: {
     background: "#fff",
-    padding: "2.93vw 4.26vw",
+    padding: "10%",
     fontsize: "1.15em",
     height: "100%"
     /* width: '100vw' */
@@ -37,6 +37,7 @@ export const menuStyles: any = {
   bmItemList: {
     color: "#b8b7ad",
     padding: "0 0em",
+    fontFamily: "Bebas Neue",
     height: "100%"
   },
   bmItem: {
@@ -44,6 +45,7 @@ export const menuStyles: any = {
     padding: "0.8em",
     color: "#000"
   },
+  bmItemText: {},
   bmOverlay: {
     // top: 0,
     // left: 0,

@@ -4,7 +4,7 @@ import { Field } from "formik";
 import { Button } from "@material-ui/core";
 
 // Local
-import Sebastian from "../../Sebastian";
+import TipBot from "../../TipBot";
 import { FormikInput } from "../../FormikWrappers";
 import {
   QuestionWrapper,
@@ -24,7 +24,7 @@ export const PersonalInfo = () => {
 
   return (
     <QuestionWrapper>
-      <Sebastian speech={speechMarkup()} />
+      <TipBot speech={speechMarkup()} />
       <InputGroupWrapper>
         <InputWrapper>
           <Field name="firstName" id="firstName" component={FormikInput} label="First Name" />

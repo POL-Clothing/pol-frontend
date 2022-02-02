@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import { Carousel } from "react-responsive-carousel";
 
 // Local
-import Sebastian from "../../Sebastian";
+import TipBot from "../../TipBot";
 import { QuestionWrapper, InputGroupWrapper, Title, Description } from "./Questions.styles";
 
 interface GenericThemeType {
@@ -19,8 +19,8 @@ export const ColorizedFinance = styled.i<GenericThemeType>`
     width: 5rem;
     height: 5rem;
   }
-  & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+  & svg g path:first-of-type {
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -30,8 +30,8 @@ export const ColorizedCalendar = styled.i<GenericThemeType>`
     width: 5rem;
     height: 5rem;
   }
-  & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+  & svg g path:first-of-type {
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -41,8 +41,8 @@ export const ColorizedLoan = styled.i<GenericThemeType>`
     width: 5rem;
     height: 5rem;
   }
-  & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+  & svg g path:first-of-type {
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -52,8 +52,8 @@ export const ColorizedCart = styled.i<GenericThemeType>`
     width: 5rem;
     height: 5rem;
   }
-  & svg g path:first-child {
-    fill: ${(props) => props.theme.colors.brand.medium};
+  & svg g path:first-of-type {
+    fill: ${(props) => props.theme.colors.brand.primary};
   }
 `;
 
@@ -70,7 +70,7 @@ export const GetPreQualified = () => {
 
   return (
     <QuestionWrapper>
-      <Sebastian speech={speechMarkup()} />
+      <TipBot speech={speechMarkup()} />
       <InputGroupWrapper>
         <Carousel
           autoPlay
