@@ -22,8 +22,8 @@ export const Layout: React.FC<LayoutProps> = ({
   children: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <LayoutContainer>
-      <LayoutContent>
+    <Container>
+      <Content>
         {children}
         <ClassNames>
           {({ css, cx }) => (
@@ -35,7 +35,7 @@ export const Layout: React.FC<LayoutProps> = ({
             />
           )}
         </ClassNames>
-      </LayoutContent>
-    </LayoutContainer>
+      </Content>
+    </Container>
   );
 };

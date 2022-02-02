@@ -97,6 +97,6 @@ export const Footer: React.FC<FootProps> = ({ classes, footerData }) => {
         ))}
       </Grid>
       <SocialLinks isDark />
-    </Container>
+    </FooterContainer>
   );
 };
