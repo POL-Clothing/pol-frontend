@@ -6,7 +6,7 @@ import parse from "html-react-parser";
 import { Modal } from "@material-ui/core";
 
 // Local
-import Sebastian from "../../Sebastian";
+import TipBot from "../../TipBot";
 import Static from "../../../utilities/staticData";
 import { FormikInput, FormikPhone, FormikCheckbox } from "../../FormikWrappers";
 import {
@@ -87,7 +87,7 @@ export const Account = () => {
 
   return (
     <QuestionWrapper>
-      <Sebastian speech={speechMarkup()} />
+      <TipBot speech={speechMarkup()} />
       <InputGroupWrapper>
         <Title>{parse(title)}</Title>
         <Subtitle>{parse(subtitle)}</Subtitle>
@@ -136,7 +136,7 @@ export const Account = () => {
           >
             {/* <Term>
               <Field type="checkbox" name="acceptSignatureTerms">
-                {(formikProps) => (
+                {(formikProps: any) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
@@ -192,7 +192,7 @@ export const Account = () => {
             </Term>
             {/* <Term>
               <Field type="checkbox" name="acceptAuthorizeTerms">
-                {(formikProps) => (
+                {(formikProps: any) => (
                   <FormikCheckbox
                     {...formikProps}
                     nextTerm={nextSlide}
